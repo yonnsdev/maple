@@ -8,21 +8,22 @@ OBJ = $(SRC:.cpp=.o)
 BIN = bin
 
 # include
-INCFLAGS = -Ilibs/SDL/include
+INCFLAGS = -I/usr/local/include/SDL2
 CXXFLAGS += $(INCFLAGS)
 
 # linker
-LDFLAGS = 
+LDFLAGS = -L/usr/local/lib
+LDFLAGS += -lSDL2
 
 .PHONY: all libs dirs build clean
 
 all: build run
 
 libs:
-	cd libs/SDL && && mkdir build && cd build && ./configure && make && sudo make install
+	cd libs/SDL && mkdir -p build && cd build && CC=../build-scripts/clang-fat.sh ../configure && make && sudo make install
 
 dirs:
-	@mkdir -p ./$(FLD)
+	@mkdir -p ./$(BIN)
 
 build: dirs $(OBJ)
 	$(CC) -o $(BIN)/maple $(filter %.o, $^) $(LDFLAGS)  
@@ -31,7 +32,7 @@ build: dirs $(OBJ)
 	$(CC) -o $@ -c $^ $(CXXFLAGS) 
 
 run:
-	@$(BIN)/maple
+	$(BIN)/maple
 
 clean:
 	rm -rf $(BIN) $(OBJ)
