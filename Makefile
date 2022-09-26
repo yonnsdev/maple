@@ -19,7 +19,7 @@ LDFLAGS =
 all: build run
 
 libs:
-	cd libs/SDL && ./configure && make && sudo make install
+	cd libs/SDL && && mkdir build && cd build && ./configure && make && sudo make install
 
 dirs:
 	@mkdir -p ./$(FLD)

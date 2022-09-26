@@ -1,3 +1,6 @@
 #include <iostream>
+#include "SDL.h"
 
-int main() {}
+int main() {
+    SDL_Init
+}
