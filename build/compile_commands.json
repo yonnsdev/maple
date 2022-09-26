@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/choidygks/Developer/maple/build",
-  "command": "/opt/homebrew/Cellar/llvm/14.0.6_1/bin/clang++ -I/opt/homebrew/include -isystem /opt/homebrew/include/SDL2 -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -o CMakeFiles/maple.dir/src/main.cpp.o -c /Users/choidygks/Developer/maple/src/main.cpp",
-  "file": "/Users/choidygks/Developer/maple/src/main.cpp"
-}
-]

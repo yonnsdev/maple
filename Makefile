@@ -5,30 +5,33 @@ CXXFLAGS = -std=c++17 -Wall -O2
 # src, obj, bin
 SRC = $(shell find src -name "*.cpp")
 OBJ = $(SRC:.cpp=.o)
-BIN = build
+BIN = bin
 
 # include
-INCFLAGS = 
+INCFLAGS = -Ilibs/SDL/include
 CXXFLAGS += $(INCFLAGS)
 
 # linker
-LDFLAGS = 
+LDFLAGS = $(shell libs/SDL/sdl2-config --libs)
 
-.PHONY: all dirs build clean
+.PHONY: all libs dirs build clean
 
 all: build run
+
+libs:
+	cd libs/SDL && ./configure && make && sudo make install
 
 dirs:
 	@mkdir -p ./$(FLD)
 
 build: dirs $(OBJ)
-	$(CC) -o $(FLD)/$(OUT) $(filter %.o, $^) $(LDFLAGS)  
+	$(CC) -o $(BIN)/maple $(filter %.o, $^) $(LDFLAGS)  
 
 %.o: %.cpp
 	$(CC) -o $@ -c $^ $(CXXFLAGS) 
 
 run:
-	@$(FLD)/$(OUT)
+	@$(BIN)/maple
 
 clean:
-	rm -rf $(FLD) $(OBJ)
+	rm -rf $(BIN) $(OBJ)
