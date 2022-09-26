@@ -1,26 +1,32 @@
 # clang
 CC = clang++
-CXXFLAGS = -std=c++17 -Wall -O2
 
 # src, obj, bin
 SRC = $(shell find src -name "*.cpp")
 OBJ = $(SRC:.cpp=.o)
 BIN = bin
 
-# include
-INCFLAGS = -I/usr/local/include/SDL2
+# Include Flags
+
+
+# Compiler Flags
+CXXFLAGS  = -std=c++20 -O2 -g -Wall
+CXXFLAGS += -Wno-unused-parameter
 CXXFLAGS += $(INCFLAGS)
 
-# linker
-LDFLAGS = -L/usr/local/lib
-LDFLAGS += -lSDL2
+# Extra Flags
+LDFLAGS  = -lm
+LDFLAGS += $(INCFLAGS)
+
+
+# [TODO: shaders here]
 
 .PHONY: all libs dirs build clean
 
 all: build run
 
 libs:
-	cd libs/SDL && mkdir -p build && cd build && CC=../build-scripts/clang-fat.sh ../configure && make && sudo make install
+
 
 dirs:
 	@mkdir -p ./$(BIN)
@@ -34,5 +40,6 @@ build: dirs $(OBJ)
 run:
 	$(BIN)/maple
 
+# make clear : removes all project build files
 clean:
 	rm -rf $(BIN) $(OBJ)
