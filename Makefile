@@ -12,7 +12,7 @@ INCFLAGS = -Ilibs/SDL/include
 CXXFLAGS += $(INCFLAGS)
 
 # linker
-LDFLAGS = $(shell libs/SDL/sdl2-config --libs)
+LDFLAGS = 
 
 .PHONY: all libs dirs build clean
 
