@@ -16,7 +16,7 @@ CCFLAGS += $(INCFLAGS)
 # Extra Flags
 LDFLAGS  = -L/opt/homebrew/opt/sdl2/lib -lSDL2
 LDFLAGS += -L/opt/homebrew/opt/sdl2_image/lib -lSDL2_image
-LDFLAGS += -L/opt/homebrew/opt/sdl2_ttf/lib -lSDL_ttf
+LDFLAGS += -L/opt/homebrew/opt/sdl2_ttf/lib -lSDL2_ttf
 LDFLAGS += $(FRAMEWORKS)
 LDFLAGS += $(INCFLAGS)
 
