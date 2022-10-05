@@ -11,4 +11,5 @@
 - [LSP (Language Server Protocol)](https://microsoft.github.io/language-server-protocol/) support
 - Syntax highlighting using [Treesitter](https://tree-sitter.github.io/tree-sitter/)
 - Quick search using [fzf](https://github.com/junegunn/fzf)
+- Modal editing support (Vim)
 - Multi-platform (Windows, MacOS, Linux)
