@@ -5,8 +5,8 @@
 #include <SDL.h>
 
 #include "core/window.hpp"
-#include "core/input_handler.hpp"
-#include "core/settings_handler.hpp"
+#include "core/handler/input_handler.hpp"
+#include "core/handler/settings_handler.hpp"
 
 class Maple {
   public:
