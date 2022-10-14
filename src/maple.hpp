@@ -1,12 +1,12 @@
 #ifndef MAPLE_HPP
 #define MAPLE_HPP
 
-#include <iostream>
 #include <SDL.h>
+#include <iostream>
 
-#include "core/window.hpp"
 #include "core/handler/input_handler.hpp"
 #include "core/handler/settings_handler.hpp"
+#include "core/window.hpp"
 
 class Maple {
   public:

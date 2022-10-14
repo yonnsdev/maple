@@ -4,9 +4,10 @@ AllowShortFunctionsOnASingleLine: Empty
 PointerAlignment: Right
 AlignArrayOfStructures: Right
 IndentCaseLabels: true
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve
 IndentWidth: 4
 NamespaceIndentation: All
 ObjCBlockIndentWidth: 4
-SortIncludes: Never
 ReflowComments: false
 ColumnLimit: 100

@@ -14,9 +14,3 @@ void InputHandler::pollEvents(Window *window) {
         }
     }
 }
-
-void InputHandler::keyboardEvents() {
-    if (_event.type == SDL_KEYDOWN) {
-        switch (_event.key.keysym.sym) {}
-    }
-}
