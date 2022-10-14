@@ -15,8 +15,8 @@ class Maple {
 
   private:
     Window *_window = nullptr;
-    InputHandler &input_handler = InputHandler::instantiate();
-    SettingsHandler &settings = SettingsHandler::instantiate();
+    InputHandler &_input_handler = InputHandler::instantiate();
+    SettingsHandler &_settings = SettingsHandler::instantiate();
 };
 
 #endif

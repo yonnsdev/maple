@@ -6,7 +6,9 @@ Maple::Maple() {
 
     // Main loop
     while (!_window->isClosed()) {
-        input_handler.pollEvents(_window);
+        _input_handler.pollEvents(_window);
+        _window->clear();
+        _window->render();
     }
 }
 

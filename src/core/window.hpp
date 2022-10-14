@@ -2,6 +2,7 @@
 #define WINDOW_HPP
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <iostream>
 #include <string>
 
@@ -12,6 +13,7 @@ class Window {
 
     void clear();
     void render();
+    void drawText();  //temp
 
     inline bool isClosed() const {
         return _closed;

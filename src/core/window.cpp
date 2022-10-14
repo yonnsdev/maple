@@ -33,3 +33,38 @@ bool Window::init() {
 
     return true;
 }
+
+void Window::clear() {
+    SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 0);
+    SDL_RenderClear(_renderer);
+}
+
+void Window::render() {
+    drawText();
+    SDL_RenderPresent(_renderer);
+}
+
+// Temp text render
+void Window::drawText() {
+    TTF_Font *font = TTF_OpenFont("/Library/Fonts/SF-Mono-Regular.otf", 13);
+    if (font == NULL) {
+        std::cerr << TTF_GetError() << std::endl;
+        setClosed(1);
+    }
+
+    SDL_Color font_color = {255, 255, 255};
+    SDL_Surface *text_surface = TTF_RenderText_Solid(font, "Hello world", font_color);
+
+    SDL_Texture *text_texture = SDL_CreateTextureFromSurface(_renderer, text_surface);
+
+    SDL_Rect text_rect;  //create a rect
+    text_rect.x = 0;     //controls the rect's x coordinate
+    text_rect.y = 0;     // controls the rect's y coordinte
+    text_rect.w = 300;   // controls the width of the rect
+    text_rect.h = 200;
+
+    SDL_RenderCopy(_renderer, text_texture, NULL, &text_rect);
+
+    SDL_FreeSurface(text_surface);
+    SDL_DestroyTexture(text_texture);
+}
