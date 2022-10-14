@@ -4,7 +4,9 @@
 #include <iostream>
 #include <SDL.h>
 
-#include "window/window.hpp"
+#include "core/window.hpp"
+#include "core/input_handler.hpp"
+#include "core/settings_handler.hpp"
 
 class Maple {
   public:
@@ -12,10 +14,9 @@ class Maple {
     ~Maple();
 
   private:
-    void pollEvents();
-
-  private:
     Window *_window = nullptr;
+    InputHandler &input_handler = InputHandler::instantiate();
+    SettingsHandler &settings = SettingsHandler::instantiate();
 };
 
 #endif

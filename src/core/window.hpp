@@ -11,6 +11,7 @@ class Window {
     ~Window();
 
     void clear();
+    void render();
 
     inline bool isClosed() const {
         return _closed;

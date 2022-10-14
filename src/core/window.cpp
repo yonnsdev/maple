@@ -19,7 +19,15 @@ bool Window::init() {
     if (_window != nullptr) {
         std::cout << "Created window(" << _w << ", " << _h << ")..." << std::endl;
     } else {
-        std::cerr << "Failed to create window. \n> Error: " << SDL_GetError() << std::endl;
+        std::cerr << "Failed to create window.\n> Error: " << SDL_GetError() << std::endl;
+        return false;
+    }
+
+    _renderer = SDL_CreateRenderer(_window, -1, 0);
+    if (_renderer != nullptr) {
+        std::cout << "Created renderer..." << std::endl;
+    } else {
+        std::cerr << "Failed to create renderer.\n>Error: " << SDL_GetError() << std::endl;
         return false;
     }
 
