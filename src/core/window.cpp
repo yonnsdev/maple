@@ -44,7 +44,17 @@ void Window::render() {
     SDL_RenderPresent(_renderer);
 }
 
-// Temp text render
+// TEMP: text render
+void Window::setText(SDL_Event &event) {
+    switch (event.type) {
+        case SDL_KEYDOWN:
+            if (event.key.keysym.sym == SDLK_SPACE) {
+                _temp_text.append("A");
+            }
+            break;
+    }
+}
+
 void Window::drawText() {
     TTF_Font *font = TTF_OpenFont("/Library/Fonts/SF-Mono-Regular.otf", 13);
     if (font == NULL) {
@@ -53,15 +63,17 @@ void Window::drawText() {
     }
 
     SDL_Color font_color = {255, 255, 255};
-    SDL_Surface *text_surface = TTF_RenderText_Solid(font, "Hello world", font_color);
+    SDL_Surface *text_surface = TTF_RenderText_Solid(font, _temp_text.c_str(), font_color);
 
     SDL_Texture *text_texture = SDL_CreateTextureFromSurface(_renderer, text_surface);
 
-    SDL_Rect text_rect;  //create a rect
-    text_rect.x = 0;     //controls the rect's x coordinate
-    text_rect.y = 0;     // controls the rect's y coordinte
-    text_rect.w = 300;   // controls the width of the rect
-    text_rect.h = 200;
+    TTF_SizeText(font, _temp_text.c_str(), &_text_w, &_text_h);
+
+    SDL_Rect text_rect;     //create a rect
+    text_rect.x = 0;        //controls the rect's x coordinate
+    text_rect.y = 0;        // controls the rect's y coordinte
+    text_rect.w = _text_w;  // controls the width of the rect
+    text_rect.h = _text_h;
 
     SDL_RenderCopy(_renderer, text_texture, NULL, &text_rect);
 

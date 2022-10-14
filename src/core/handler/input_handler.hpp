@@ -16,7 +16,6 @@ class InputHandler {
     void pollEvents(Window *window);
 
     inline SDL_Event &getEvent() {
-        std::cout << &_event << std::endl;
         return _event;
     }
 

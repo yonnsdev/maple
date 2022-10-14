@@ -13,7 +13,10 @@ class Window {
 
     void clear();
     void render();
-    void drawText();  //temp
+
+    // TEMP: text rendering
+    void setText(SDL_Event &event);
+    void drawText();
 
     inline bool isClosed() const {
         return _closed;
@@ -30,6 +33,9 @@ class Window {
     const std::string _title;
 
     bool _closed = false;
+
+    int _text_w, _text_h;
+    std::string _temp_text;
 
     SDL_Window *_window = nullptr;
     SDL_Renderer *_renderer = nullptr;
