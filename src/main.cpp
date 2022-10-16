@@ -2,6 +2,6 @@
 
 int main() {
     Maple &maple = Maple::instantiate();
-    maple.start();
+    maple.run();
     return 0;
 }

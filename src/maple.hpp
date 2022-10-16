@@ -5,6 +5,8 @@
 #include <SDL_ttf.h>
 #include <iostream>
 
+#include "core/window.hpp"
+
 class Maple {
 public:
     Maple(const Maple &) = delete;
@@ -14,10 +16,10 @@ public:
         return _instance;
     }
 
-    void start() {
+    void run() {
         initiate_sdl();
 
-        // starting code here
+        // program code here
     }
 
 private:
@@ -38,6 +40,8 @@ private:
             std::cerr << "Failed to initiate SDL2_TTF.\n> Error: " << TTF_GetError() << std::endl;
         }
     }
+
+    Window &_window = Window::instantiate();
 };
 
 #endif
