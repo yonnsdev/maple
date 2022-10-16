@@ -22,8 +22,6 @@ class InputHandler {
   private:
     InputHandler() {}
 
-    void keyboardEvents();
-
     SDL_Event _event;
 };
 

@@ -1,6 +1,9 @@
 #ifndef PANE_HPP
 #define PANE_HPP
 
-class Pane {};
+class Pane {
+  public:
+  private:
+};
 
 #endif
