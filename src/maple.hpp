@@ -7,6 +7,10 @@
 
 #include "core/event.hpp"
 #include "core/window.hpp"
+#include "data/data.hpp"
+
+//temp
+#include "editor/editor.hpp"
 
 class Maple {
 public:
@@ -17,15 +21,19 @@ public:
     }
 
     void run() {
-        initiate_sdl();
+        instantiate_sdl();
 
         if (!_window.create("Maple", 800, 600)) {
             _is_running = false;
         }
 
+        Editor editor(0, 0, 800, 600);
+
         while (_is_running) {
             _event_handler.poll_events();
             check_events();
+
+            editor.update();
 
             _window.clear();
             _window.present();
@@ -37,19 +45,21 @@ public:
 private:
     Maple() {}
 
-    void initiate_sdl() {
+    void instantiate_sdl() {
         // SDL2
         if (SDL_Init(SDL_INIT_VIDEO) == 0) {
-            std::cout << "Initiating SDL2..." << std::endl;
+            std::cout << "maple.hpp : Initiating SDL2..." << std::endl;
         } else {
-            std::cerr << "Failed to initiate SDL2.\n> Error: " << SDL_GetError() << std::endl;
+            std::cerr << "maple.hpp : Failed to initiate SDL2.\n> Error: " << SDL_GetError()
+                      << std::endl;
         }
 
         // SDL2_TTF
         if (TTF_Init() == 0) {
-            std::cout << "Initiating SDL2_TTF..." << std::endl;
+            std::cout << "maple.hpp : Initiating SDL2_TTF..." << std::endl;
         } else {
-            std::cerr << "Failed to initiate SDL2_TTF.\n> Error: " << TTF_GetError() << std::endl;
+            std::cerr << "maple.hpp : Failed to initiate SDL2_TTF.\n> Error: " << TTF_GetError()
+                      << std::endl;
         }
     }
 
@@ -73,6 +83,7 @@ private:
 private:
     Window &_window = Window::instantiate();
     EventHandler &_event_handler = EventHandler::instantiate();
+    Data &_data = Data::instantiate();
 
     bool _is_running = true;
 };

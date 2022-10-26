@@ -1,0 +1,25 @@
+#ifndef EDITOR_EDITOR_HPP
+#define EDITOR_EDITOR_HPP
+
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <iostream>
+#include <string>
+
+#include "../core/event.hpp"
+#include "../core/pane.hpp"
+#include "../core/window.hpp"
+
+class Editor : protected Pane {
+public:
+    Editor(int x, int y, int w, int h) : Pane{x, y, w, h} {}
+
+    void update() {}
+
+private:
+    Window &_window = Window::instantiate();
+    SDL_Renderer *_renderer = _window.get_renderer();
+    EventHandler &_event_handler = EventHandler::instantiate();
+};
+
+#endif

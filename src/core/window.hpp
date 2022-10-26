@@ -15,18 +15,20 @@ public:
 
     bool create(std::string title, int w, int h) {
         if (_window == nullptr && _renderer == nullptr) {
-            std::cout << "Creating window..." << std::endl;
+            std::cout << "core/window.hpp : Creating window..." << std::endl;
             _window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,
                                        SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_RESIZABLE);
             if (_window == nullptr) {
-                std::cerr << "Failed to create window.\n> Error: " << SDL_GetError() << std::endl;
+                std::cerr << "core/window.hpp : Failed to create window.\n> Error: "
+                          << SDL_GetError() << std::endl;
                 return false;
             }
 
-            std::cout << "Creating renderer..." << std::endl;
+            std::cout << "core/window.hpp : Creating renderer..." << std::endl;
             _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_SOFTWARE);
             if (_renderer == nullptr) {
-                std::cerr << "Failed to create renderer.\n> Error: " << SDL_GetError() << std::endl;
+                std::cerr << "core/window.hpp : Failed to create renderer.\n> Error: "
+                          << SDL_GetError() << std::endl;
                 return false;
             }
 
@@ -35,6 +37,10 @@ public:
 
         std::cerr << "Window is already created." << std::endl;
         return false;
+    }
+
+    SDL_Renderer *get_renderer() {
+        return _renderer;
     }
 
     void present() {

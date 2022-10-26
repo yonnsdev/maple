@@ -11,9 +11,8 @@ public:
         return _instance;
     }
 
-    SDL_Event &poll_events() {
+    void poll_events() {
         SDL_PollEvent(&_event);
-        return _event;
     }
 
     SDL_Event &get_events() {
