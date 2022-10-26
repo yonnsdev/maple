@@ -40,4 +40,4 @@ run:
 
 # make clear : removes all project build files
 clean:
-	rm -rf $(BIN) $(OBJ)
+	rm -rf $(BIN) $(OBJ) 

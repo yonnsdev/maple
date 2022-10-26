@@ -5,12 +5,12 @@
 #include <SDL_ttf.h>
 #include <iostream>
 
+#include "core/event.hpp"
 #include "core/window.hpp"
 
 class Maple {
 public:
     Maple(const Maple &) = delete;
-
     static Maple &instantiate() {
         static Maple _instance;
         return _instance;
@@ -19,7 +19,19 @@ public:
     void run() {
         initiate_sdl();
 
-        // program code here
+        if (!_window.create("Maple", 800, 600)) {
+            _is_running = false;
+        }
+
+        while (_is_running) {
+            _event_handler.poll_events();
+            check_events();
+
+            _window.clear();
+            _window.present();
+        }
+
+        quit();
     }
 
 private:
@@ -41,7 +53,28 @@ private:
         }
     }
 
+    void check_events() {
+        switch (_event_handler.get_events().type) {
+            case SDL_QUIT:
+                _is_running = false;
+                break;
+            default:
+                break;
+        }
+    }
+
+    void quit() {
+        _window.quit();
+
+        TTF_Quit();
+        SDL_Quit();
+    }
+
+private:
     Window &_window = Window::instantiate();
+    EventHandler &_event_handler = EventHandler::instantiate();
+
+    bool _is_running = true;
 };
 
 #endif
